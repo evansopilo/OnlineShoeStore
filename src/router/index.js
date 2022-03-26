@@ -2,6 +2,8 @@ import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../views/Home.vue'
 import Admin from "../views/Admin.vue"
 import ProductsList from "../views/ProductsList.vue"
+import AdminProductsList from "../views/AdminProductLists.vue"
+import UsersList from "../views/UsersList.vue"
 
 const routes = [
   {
@@ -12,7 +14,18 @@ const routes = [
   {
     path: '/admin',
     name: 'Admin',
-    component: Admin
+    component: Admin,
+    children:[
+      {
+        path : 'products',
+        component : AdminProductsList
+      },
+      {
+        path : 'users',
+        component : UsersList
+
+      }
+    ]
   },
   {
     path: '/products',
