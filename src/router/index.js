@@ -1,9 +1,9 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../views/Home.vue'
-import Admin from "../views/Admin.vue"
 import ProductsList from "../views/ProductsList.vue"
-import AdminProductsList from "../views/AdminProductLists.vue"
-import UsersList from "../views/UsersList.vue"
+import Admin from "../views/Admin.vue"
+import AdminUsersList from "../views/admin/UsersList.vue"
+import AdminProductsList from "../views/admin/ProductList.vue"
 
 const routes = [
   {
@@ -12,25 +12,24 @@ const routes = [
     component: Home
   },
   {
-    path: '/admin',
-    name: 'Admin',
-    component: Admin,
-    children:[
-      {
-        path : 'products',
-        component : AdminProductsList
-      },
-      {
-        path : 'users',
-        component : UsersList
-
-      }
-    ]
-  },
-  {
     path: '/products',
     name: 'Products',
     component: ProductsList
+  },
+  {
+    path: '/admin',
+    name: 'Admin',
+    component: Admin,
+    children: [
+      {
+        path:'users',
+        component: AdminUsersList
+      },
+      {
+        path:'products',
+        component: AdminProductsList
+      }
+    ]
   },
   {
     path: '/about',
